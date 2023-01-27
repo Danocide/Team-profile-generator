@@ -1,4 +1,10 @@
-return `<!DOCTYPE html>
+function generateCard({name, id, email, role, }) {
+return ``
+}
+function generateHtml() {
+
+
+    return `<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -75,3 +81,4 @@ return `<!DOCTYPE html>
 </body>
 
 </html>`
+}
