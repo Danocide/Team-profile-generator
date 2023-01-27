@@ -1,14 +1,14 @@
 // require all of your classes
-// const employee = require('../lib/Employee.js')
-// const engineer = require('../lib/Engineer.js')
-// const intern = require('../lib/Intern.js')
-// const manager = require('../lib/Manager.js')
+const employee = require('../lib/Employee.js')
+const engineer = require('../lib/Engineer.js')
+const intern = require('../lib/Intern.js')
+const manager = require('../lib/Manager.js')
 // require inquirer, path if needed, fs
 const inquirer = require('inquirer');
 const fs = require('fs')
 
 // require your page template
-// const pageTemplate = require('../src/page-template.js')
+const pageTemplate = require('../src/page-template.js')
 
 // empty team members array
 let team = []

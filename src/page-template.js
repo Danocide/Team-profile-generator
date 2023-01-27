@@ -1,9 +1,6 @@
-function generateCard({name, id, email, role, }) {
-return ``
-}
-function generateHtml() {
+const index = require('../index')
 
-
+module.exports = (team) => {
     return `<!DOCTYPE html>
 <html lang="en">
 
@@ -27,53 +24,8 @@ function generateHtml() {
     <div class="container-md">
         <div class="row justify-content-center">
 
-            <div class="col-4 card mt-5 mx-2" style="width: 18rem;">
-                <div class="bg-primary card-body text-white h2">
-                    <h5 class="card-title">Leroy Jenkins</h5>
-                    <p class="card-text">🤡 Manager</p>
-                </div>
-                <ul class="list-group list-group">
-                    <li class="list-group-item">ID:</li>
-                    <li class="list-group-item">Email: <a href="">email</a></li>
-                    <li class="list-group-item">Office Number: </li>
-                </ul>
-            </div>
+           ${createTeamCards(team)}
 
-            <div class="col-4 card mt-5 mx-2" style="width: 18rem;">
-                <div class="bg-primary card-body text-white h2">
-                    <h5 class="card-title">ur mom</h5>
-                    <p class="card-text">🤬 Engineer</p>
-                </div>
-                <ul class="list-group list-group">
-                    <li class="list-group-item">ID:</li>
-                    <li class="list-group-item">Email: <a href="">email</a></li>
-                    <li class="list-group-item">GitHub: <a href="https://github.com/Danocide">github</a></li>
-                </ul>
-            </div>
-
-            <div class="col-4 card mt-5 mx-2" style="width: 18rem;">
-                <div class="bg-primary card-body text-white h2">
-                    <h5 class="card-title">Chuck u Testa</h5>
-                    <p class="card-text">🛼 Employee</p>
-                </div>
-                <ul class="list-group list-group">
-                    <li class="list-group-item">ID:</li>
-                    <li class="list-group-item">Email: <a href="">email</a></li>
-                    <li class="list-group-item">GitHub: <a href="https://github.com/Danocide">github</a></li>
-                </ul>
-            </div>
-
-            <div class="col-4 card mt-5 mx-2" style="width: 18rem;">
-                <div class="bg-primary card-body text-white h2">
-                    <h5 class="card-title">Tommy 2 Teeth</h5>
-                    <p class="card-text">👶 Intern</p>
-                </div>
-                <ul class="list-group list-group">
-                    <li class="list-group-item">ID:</li>
-                    <li class="list-group-item"><a href="">email</a></li>
-                    <li class="list-group-item">School: School of Rock</li>
-                </ul>
-            </div>
 
         </div>
     </div>
@@ -81,4 +33,63 @@ function generateHtml() {
 </body>
 
 </html>`
+}
+
+function createTeamCards(team) {
+    let cardsHTML = "";
+    team.forEach(emp => {
+        if (emp.constructor.name === "Manager") {
+            cardsHTML += `<div class="col-4 card mt-5 mx-2" style="width: 18rem;">
+            <div class="bg-primary card-body text-white h2">
+                <h5 class="card-title">${emp.getName}</h5>
+                <p class="card-text">🤡 ${emp.getRole}</p>
+            </div>
+            <ul class="list-group list-group">
+                <li class="list-group-item">ID: ${emp.getId}</li>
+                <li class="list-group-item">Email: <a href="mailto:${emp.getEmail}">email</a></li>
+                <li class="list-group-item">Office Number: ${emp.getPhone}</li>
+            </ul>
+        </div>`
+        }
+        if (emp.constructor.name === "Engineer") {
+            cardsHTML += `<div class="col-4 card mt-5 mx-2" style="width: 18rem;">
+            <div class="bg-primary card-body text-white h2">
+                <h5 class="card-title">${emp.name}</h5>
+                <p class="card-text">🤬 ${emp.role}</p>
+            </div>
+            <ul class="list-group list-group">
+                <li class="list-group-item">ID: ${emp.getId}</li>
+                <li class="list-group-item">Email: <a href="mailto:${emp.getEmail}">${emp.getEmail}</a></li>
+                <li class="list-group-item">GitHub: <a href="https://github.com/${emp.getGit}">${emp.getGit}</a></li>
+            </ul>
+        </div>`
+        }
+        if (emp.constructor.name === "Employee") {
+            cardsHTML += `<div class="col-4 card mt-5 mx-2" style="width: 18rem;">
+            <div class="bg-primary card-body text-white h2">
+                <h5 class="card-title">${emp.getName}</h5>
+                <p class="card-text">🛼 ${emp.getRole}</p>
+            </div>
+            <ul class="list-group list-group">
+                <li class="list-group-item">ID: ${emp.getId}</li>
+                <li class="list-group-item">Email: <a href="mailto:${emp.getEmail}">${emp.getEmail}</a></li>
+                <li class="list-group-item">GitHub: <a href="https://github.com/${emp.getGit}">${emp.getGit}</a></li>
+            </ul>
+        </div>`
+        }
+        if (emp.constructor.name === "Intern") {
+            cardsHTML += `<div class="col-4 card mt-5 mx-2" style="width: 18rem;">
+            <div class="bg-primary card-body text-white h2">
+                <h5 class="card-title">${emp.getName}</h5>
+                <p class="card-text">👶 ${emp.getRole}</p>
+            </div>
+            <ul class="list-group list-group">
+                <li class="list-group-item">ID: ${emp.getId}</li>
+                <li class="list-group-item"><a href="mailto:${emp.getEmail}">${emp.getEmail}</a></li>
+                <li class="list-group-item">School: ${emp.getSchool}</li>
+            </ul>
+        </div>`
+        }
+    })
+    return cardsHTML;
 }
