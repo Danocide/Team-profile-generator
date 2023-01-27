@@ -1,10 +1,10 @@
 {
-  "name": "src",
+  "name": "team-profile-generator",
   "version": "1.0.0",
   "description": "",
-  "main": "page-template.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --verbose test/"
   },
   "author": "",
   "license": "ISC",
